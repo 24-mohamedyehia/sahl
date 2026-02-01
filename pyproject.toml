@@ -1,0 +1,75 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sahl"
+version = "0.1.0"
+description = "Easy Kaggle dataset upload with proper versioning support"
+readme = "README.md"
+authors = [
+    {name = "Mohamed Yehia", email = "mo.yehia.824@gmail.com"}
+]
+license = {text = "MIT"}
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+keywords = ["kaggle", "dataset", "versioning", "upload", "data-science"]
+requires-python = ">=3.11"
+dependencies = [
+    "kaggle>=1.5.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "black>=22.0",
+    "isort>=5.0",
+    "flake8>=5.0",
+    "mypy>=0.990",
+]
+
+[project.urls]
+Homepage = "https://github.com/24-mohamedyehia/sahl"
+Documentation = "https://github.com/24-mohamedyehia/sahl#readme"
+Repository = "https://github.com/24-mohamedyehia/sahl"
+"Bug Tracker" = "https://github.com/24-mohamedyehia/sahl/issues"
+
+[project.scripts]
+sahl-upload = "sahl.cli:main"
+
+[tool.setuptools]
+packages = ["sahl"]
+package-dir = {"" = "src"}
+
+[tool.setuptools.package-data]
+sahl = ["py.typed"]
+
+[tool.black]
+line-length = 100
+target-version = ['py311', 'py312']
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
